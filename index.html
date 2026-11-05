@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Same Take: do all models say the same thing?</title>
+    <meta name="description" content="Ask many Pollinations models the same question several times and measure, in code, how many of their answers are the same take. Paid with your own Pollen.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top">
+        <a class="brand" href="./">Same Take</a>
+        <div class="session">
+            <span id="whoami" hidden>Signed in with your Pollen</span>
+            <button id="sign-in" class="button primary" type="button">Sign in with Pollen</button>
+            <button id="sign-out" class="button" type="button" hidden>Sign out</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Do all models say the same thing?</h1>
+            <p>
+                ModelCompare asked 14 models for their most controversial opinion of humans, three times each:
+                <a href="https://www.modelcompare.ai/blog/ai-models-controversial-take-on-humans">35 of 41 answers were the same take</a>.
+                Ask your own question of any Pollinations models, the identical prompt each time with no system prompt, and see how many answers land in the biggest group.
+                The grouping is done in code, with no judge model: each answer is turned into an embedding and answers are put together when their cosine similarity reaches the level you choose, so you can check why any two were grouped.
+            </p>
+        </section>
+
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+        <section class="card">
+            <h2>Ask</h2>
+            <label class="field">Question
+                <textarea id="question" rows="2"></textarea>
+            </label>
+            <div class="row presets" id="presets"></div>
+            <fieldset>
+                <legend>Models</legend>
+                <div id="models" class="models"></div>
+            </fieldset>
+            <div class="row">
+                <label class="inline">Times each model is asked
+                    <select id="repeats">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                        <option>4</option>
+                    </select>
+                </label>
+                <label class="inline">Same take means a similarity of at least
+                    <select id="threshold">
+                        <option value="0.4">0.40</option>
+                        <option value="0.5" selected>0.50</option>
+                        <option value="0.6">0.60</option>
+                        <option value="0.7">0.70</option>
+                    </select>
+                </label>
+            </div>
+            <p id="estimate" class="fine"></p>
+            <div class="row">
+                <button id="run" class="button primary" type="button">Ask them all</button>
+                <button id="stop" class="button" type="button" hidden>Stop</button>
+                <span id="progress" class="fine"></span>
+            </div>
+        </section>
+
+        <section id="verdict" class="card" hidden>
+            <h2 id="headline"></h2>
+            <p id="detail" class="fine"></p>
+            <div id="shared" class="chips"></div>
+            <h3>Answers by group</h3>
+            <div id="groups"></div>
+            <h3>Which models agree with which</h3>
+            <p class="fine">Mean similarity between every answer of one model and every answer of another. Darker is closer.</p>
+            <div class="scroll"><table id="matrix"></table></div>
+            <h3>Per model</h3>
+            <div class="scroll"><table id="table"></table></div>
+        </section>
+
+        <section id="answers" class="gallery" aria-live="polite"></section>
+    </main>
+
+    <footer class="foot">
+        <p>
+            Every model call runs on <a href="https://pollinations.ai/?ref=badge">Pollinations</a>. This page has no server and keeps no key: you sign in with
+            <a href="https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md">your own Pollen</a> and the questions are paid from your balance.
+            Made with pollinations.ai.
+        </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
