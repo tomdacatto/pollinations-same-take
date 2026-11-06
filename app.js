@@ -48,7 +48,7 @@ function renderVerdict() {
     if (!summary.total) return;
     const top = summary.groups[0];
     $("#headline").textContent =
-        `${Math.round(summary.sharedShare * summary.total)} of ${summary.total} answers are the same take (${percent(summary.sharedShare)})`;
+        `${Math.round(summary.sharedShare * summary.total)} of ${summary.total} answers are close in meaning (${percent(summary.sharedShare)})`;
     $("#detail").textContent =
         `The biggest group has ${top.size} answers from ${top.models.length} of ${summary.models.length} models.` +
         (summary.outlier ? ` ${summary.outlier} agrees least with the others.` : "") +
@@ -139,6 +139,8 @@ async function run() {
         signal,
     );
     // Once the answers are in, embed them to compare their meaning; the words are the fallback.
+    // Grouping goes through the answers in order, so fix the order: by model, not by arrival.
+    state.results.sort((a, b) => a.model.localeCompare(b.model));
     const worked = state.results.filter((r) => !r.error);
     if (worked.length > 1 && !signal.aborted) {
         $("#progress").textContent = "Comparing the answers...";

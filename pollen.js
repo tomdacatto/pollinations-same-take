@@ -112,7 +112,9 @@ export async function chat(model, messages, { signal, seed, temperature } = {}) 
     if (res.ok) {
         const choice = (await res.json()).choices?.[0];
         if (choice?.finish_reason === "refusal") throw new PollenError(`${model} refused.`, 200);
-        return choice?.message?.content ?? "";
+        // An empty reply is a failed request, so it cannot misalign the answers with their embeddings.
+        if (!choice?.message?.content?.trim()) throw new PollenError(`${model} sent an empty reply.`, 200);
+        return choice.message.content;
     }
     const detail = (await res.json().catch(() => ({}))).error?.message ?? `Request failed (${res.status})`;
     if (res.status === 401) {

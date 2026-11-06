@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Same Take: do all models say the same thing?</title>
-    <meta name="description" content="Ask many Pollinations models the same question several times and measure, in code, how many of their answers are the same take. Paid with your own Pollen.">
+    <meta name="description" content="Ask many Pollinations models the same question several times and measure, in code, how many of their answers are close in meaning. Paid with your own Pollen.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
                 ModelCompare asked 14 models for their most controversial opinion of humans, three times each:
                 <a href="https://www.modelcompare.ai/blog/ai-models-controversial-take-on-humans">35 of 41 answers were the same take</a>.
                 Ask your own question of any Pollinations models, the identical prompt each time with no system prompt, and see how many answers land in the biggest group.
-                The grouping is done in code, with no judge model: each answer is turned into an embedding and answers are put together when their cosine similarity reaches the level you choose, so you can check why any two were grouped.
+                The grouping is done in code, with no judge model: each answer is turned into an embedding and answers are put together when their cosine similarity reaches the level you choose, and moving the level regroups them at once.
             </p>
         </section>
 
@@ -73,7 +73,7 @@
             <h3>Answers by group</h3>
             <div id="groups"></div>
             <h3>Which models agree with which</h3>
-            <p class="fine">Mean similarity between every answer of one model and every answer of another. Darker is closer.</p>
+            <p class="fine">Mean similarity between every answer of one model and every answer of another. Brighter is closer.</p>
             <div class="scroll"><table id="matrix"></table></div>
             <h3>Per model</h3>
             <div class="scroll"><table id="table"></table></div>

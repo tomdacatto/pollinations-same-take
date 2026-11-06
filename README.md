@@ -17,16 +17,19 @@ ModelCompare asked 14 models for their most controversial opinion of humans, thr
 
 ## A real run
 
-Signed in with my own Pollen on the live code, with the post's question: seven models (`nex-agi/nex-n2.5-mini`, `qwen/qwen3.8-flash`, `qwen/qwen3.7-flash`, `z-ai/glm-5.3-flash`, `openai/gpt-5.4-nano`, `deepseek/deepseek-v4.1-flash`, `google/gemini-3.5-flash-lite`), three answers each, 21 answers, about 0.002 Pollen.
+Signed in with my own Pollen on the live code, with the post's question: seven models (`nex-agi/nex-n2.5-mini`, `qwen/qwen3.8-flash`, `qwen/qwen3.7-flash`, `z-ai/glm-5.3-flash`, `openai/gpt-5.4-nano`, `deepseek/deepseek-v4.1-flash`, `google/gemini-3.5-flash-lite`), three answers each, 21 answers, a few thousandths of a Pollen.
 
-- At a similarity of 0.50, **6 of 21 answers (29%) are the same take**, from 4 of the 7 models: that human morality is status competition and self-deception (`gpt-5.4-nano`, `deepseek-v4.1-flash`, `gemini-3.5-flash-lite`, `qwen3.7-flash`). The post found 35 of 41. Here the rest form groups of five or fewer: "humans are most honest when they believe they are being clever", "humans confuse loyalty with morality", `gemini-3.5-flash-lite` once calling humans a plague species, and `qwen3.7-flash` twice answering that it has no opinions.
+- At a similarity of 0.50, **6 of 21 answers (29%) are close in meaning**, from 4 of the 7 models: that human morality is status competition and self-deception (`gpt-5.4-nano`, `deepseek-v4.1-flash`, `gemini-3.5-flash-lite`, `qwen3.7-flash`). The post found 35 of 41. Here the rest form groups of five or fewer: "humans are most honest when they believe they are being clever", "humans confuse loyalty with morality", `gemini-3.5-flash-lite` once calling humans a plague species, and `qwen3.7-flash` twice answering that it has no opinions.
 - `openai/gpt-5.4-nano` agrees with itself most (0.66) and `z-ai/glm-5.3-flash` least (0.38), which gave a different take each time. `qwen/qwen3.7-flash` agrees least with the other models (it declined twice).
 - An earlier run with a different set of models and the same question gave 9 of 21 (43%). The number moves with the models and with chance, so read it as a measurement you can repeat, not a constant.
 
 ![Results of the run](docs/results.png)
 
+The screenshot was taken before the headline was reworded: it says "the same take" where the page now says "close in meaning".
+
 ## Not verified
 
+- Close in meaning is not the same as the same take: embeddings measure how near two answers are in wording and topic, not stance. In the run above, several of the separate groups (self-deception, loyalty over truth) are the kind a person would merge into one take, as the post did, so the 29% is a floor for that reading. Lower the similarity level to merge more.
 - It is not a reproduction of the post's numbers: the post used 14 frontier models, these are cheap ones, and the post's grouping was done by a person. Embedding similarity measures how close two answers are in meaning, which is not the same as "the same take"; that is why the threshold is yours to move.
 - `mistralai/mistral-small-4` rejects the `seed` parameter (422), so it fails in this app and its requests are reported, not counted.
 - Phones and browsers other than desktop Chrome. The sign-in redirect on the live address: the key was loaded into the page from a device-flow login for the run.
