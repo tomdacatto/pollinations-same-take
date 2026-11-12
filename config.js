@@ -27,3 +27,7 @@ export const QUESTIONS = [
     "Name the most overrated invention in history, and why, in one sentence.",
     "If you could delete one word from the English language, which would it be? Answer in one sentence.",
 ];
+
+// The app's publishable App Key (pk_...), sent as client_id so the consent screen names the app and usage is
+// attributed to it. Its redirect URI is exactly this page's address.
+export const APP_KEY = "pk_K6epydACEFjhdpNq";
