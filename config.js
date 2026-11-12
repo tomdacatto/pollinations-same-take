@@ -8,13 +8,13 @@ export const CONCURRENCY = 4;
 
 // Models ticked at the start, when the live list has them: one per lab.
 export const DEFAULT_MODELS = [
-    "google/gemini-3.5-flash-lite",
     "openai/gpt-5.4-nano",
     "deepseek/deepseek-v4.1-flash",
-    "qwen/qwen3.7-flash",
-    "qwen/qwen3.8-flash",
     "z-ai/glm-5.3-flash",
-    "nex-agi/nex-n2.5-mini",
+    "meta/llama-3.3-70b-instruct",
+    "minimax/minimax-m3.1-flash",
+    "moonshotai/kimi-k2.6",
+    "x-ai/grok-4.3",
 ];
 
 // The model that turns each answer into numbers, so answers are compared by meaning.

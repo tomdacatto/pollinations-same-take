@@ -29,6 +29,7 @@ The screenshot was taken before the headline was reworded: it says "the same tak
 
 ## Not verified
 
+- The default models are free for every visitor (`paid_only` is false on `gen.pollinations.ai/v1/models`, checked 2026-11-12): the real run above used earlier defaults, four of which are paid-only. Each new default answered one test call with a `seed`; the table above was not re-run with them. `mistralai/mistral-large-3` was tried and dropped: a request with a `seed` hung past 100 seconds in one of three tries.
 - Close in meaning is not the same as the same take: embeddings measure how near two answers are in wording and topic, not stance. In the run above, several of the separate groups (self-deception, loyalty over truth) are the kind a person would merge into one take, as the post did, so the 29% is a floor for that reading. Lower the similarity level to merge more.
 - It is not a reproduction of the post's numbers: the post used 14 frontier models, these are cheap ones, and the post's grouping was done by a person. Embedding similarity measures how close two answers are in meaning, which is not the same as "the same take"; that is why the threshold is yours to move.
 - `mistralai/mistral-small-4` rejects the `seed` parameter (422), so it fails in this app and its requests are reported, not counted.
